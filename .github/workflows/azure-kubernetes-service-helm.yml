@@ -95,7 +95,6 @@ jobs:
   deploy:
      runs-on: ubuntu-latest
      if: github.ref == 'refs/heads/main'
-     needs: QA
      steps:
     # Checks out the repository this file is in
       - uses: actions/checkout@v3
