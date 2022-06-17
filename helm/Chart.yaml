@@ -4,7 +4,7 @@ description: A Helm chart for Kubernetes
 
 dependencies:
   - name: redis
-    version: 14.7.1
+    version: 16.x.x
     repository: https://charts.bitnami.com/bitnami
 ...
 type: application
