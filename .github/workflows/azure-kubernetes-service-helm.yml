@@ -43,7 +43,7 @@ env:
   RESOURCE_GROUP: "testgroup"
   CLUSTER_NAME: "testcluster"
   IMAGE_PULL_SECRET_NAME: "aks-connection"
-  CHART_PATH: "./helm/Chart.yaml"
+  CHART_PATH: "helm"
   CHART_OVERRIDE_PATH: "./helm/values.yaml"
 
 jobs:
