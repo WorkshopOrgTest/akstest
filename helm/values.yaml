@@ -22,3 +22,5 @@ service:
   type: LoadBalancer
   port: 80
 
+autoscaling:
+  enabled: false
