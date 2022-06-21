@@ -17,9 +17,8 @@ image:
   repository: ghcr.io/workshoporgtest/akstest
   pullPolicy: IfNotPresent
   tag: latest
-...
+
 service:
   type: LoadBalancer
   port: 80
-...
 
