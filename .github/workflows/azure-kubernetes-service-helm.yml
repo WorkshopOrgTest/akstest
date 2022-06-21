@@ -133,6 +133,7 @@ jobs:
         uses: Azure/k8s-deploy@v3.1
         with:
           action: deploy
+          strategy: canary
           manifests: ${{ steps.bake.outputs.manifestsBundle }}
           images: |
             ghcr.io/workshoporgtest/akstest:latest
