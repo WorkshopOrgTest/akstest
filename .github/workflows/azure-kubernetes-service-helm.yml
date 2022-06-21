@@ -109,10 +109,6 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
-
-      - run: |
-         cd helm
-         mkdir charts
          
       # Runs Helm to create manifest files
       - name: Bake deployment
