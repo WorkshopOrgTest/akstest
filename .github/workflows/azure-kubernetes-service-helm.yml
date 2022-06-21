@@ -109,6 +109,14 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+      
+      - uses: azure/k8s-create-secret@v1
+        name: Create imagepullsecret for GCR
+        with:
+          container-registry-url: ghcr.io
+          container-registry-username: workshoporgtest
+          container-registry-password: ${{ secrets.PAT_TOKEN }}
+          secret-name: aks-connection
          
       # Runs Helm to create manifest files
       - name: Bake deployment
@@ -129,4 +137,4 @@ jobs:
           images: |
             ghcr.io/workshoporgtest/akstest:latest
           imagepullsecrets: |
-            ${{ env.IMAGE_PULL_SECRET_NAME }}
+            aks-connection
