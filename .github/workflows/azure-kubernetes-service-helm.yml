@@ -124,7 +124,6 @@ jobs:
         with:
           renderEngine: 'helm'
           helmChart: ${{ env.CHART_PATH }}
-          overrideFiles: './helm/values.yaml'
           helm-version: 'latest' 
         id: bake
 
