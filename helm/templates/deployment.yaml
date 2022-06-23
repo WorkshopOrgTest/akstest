@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "azure-vote-front.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  replicas: 2
   selector:
     matchLabels:
       {{- include "azure-vote-front.selectorLabels" . | nindent 6 }}
@@ -20,19 +18,14 @@ spec:
       labels:
         {{- include "azure-vote-front.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: azure-vote-front
+          image: "ghcr.io/workshoporgtest/akstest:latest"
+          imagePullPolicy: IfNotPresent
           env:
           - name: REDIS
-            value: {{ .Values.backendName }}
+            value: azure-vote-backend-master
           ports:
             - name: http
               containerPort: 80
